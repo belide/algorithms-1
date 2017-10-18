@@ -1,2 +1,2 @@
 # algorithms
-link[https://martinonweb.github.io/algorithms/]
+[Link](https://martinonweb.github.io/algorithms/)
