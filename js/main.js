@@ -86,16 +86,26 @@ function bubbleSort() {
 }
 
 // Algorithms - Insertion Sort
-function insertionSort() {}
+function insertionSort() {
+	alert("Coming soon!");
+}
 
 // Algorithms - Merge Sort
-function mergeSort() {}
+function mergeSort() {
+	alert("Coming soon!");
+}
 
 // Algorithms - Quick Sort
-function quickSort() {}
+function quickSort() {
+	alert("Coming soon!");
+}
 
 // Algorithms - Radix Sort
-function radixSort() {}
+function radixSort() {
+	alert("Coming soon!");
+}
 
 // Algorithms - Binary Search
-function binarySearch() {}
+function binarySearch() {
+	alert("Coming soon!");
+}
