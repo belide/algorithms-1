@@ -2,7 +2,8 @@
 
 // Declare initial variables
 let input = document.querySelector("#main-input"),
-	output = document.querySelector(".output > p"),
+	outputContainer = document.querySelector(".output-container"),
+	output = document.querySelector(".output"),
 	bubbleSortB = document.querySelector("#bubble-sort"),
 	insertionSortB = document.querySelector("#insertion-sort"),
 	mergeSortB = document.querySelector("#merge-sort"),
@@ -25,15 +26,24 @@ function bubbleSort() {
 		sorted = false,
 		pass = 1,
 		highlight = "highlightGreen",
-		print = "Initial&nbsp; : &nbsp;&nbsp;&nbsp;";
-	array.forEach(function(e, index) {
-		array[index] = +e;
-		print += "<span class='highlightBlue'>&nbsp; " + array[index] + "&nbsp; </span>";
-	});
+		print = "<p>Initial&nbsp; : &nbsp;&nbsp;&nbsp;";
+
+	// Check for NaN and initial print line
+	for (let i = 0; i < length; i++) {
+		if (isNaN(array[i])) {
+			alert("Only numbers are allowed.");
+			output.innerHTML = "";
+			return 1;
+		}
+		array[i] = +array[i];
+		print += "<span class='highlightBlue'>&nbsp; " + array[i] + "&nbsp; </span>";
+	}
 	print += "<br><br>";
 
-	while (!sorted) {
+	// Main loop
+	while (!sorted && pass < 50 && length >= 2) {
 		sorted = true;
+		// Pass loop
 		for (let i = 0; i < length - 1; i++) {
 			print += "Pass " + pass + " : &nbsp;&nbsp;&nbsp;";
 			highlight = "highlightGreen";
@@ -44,6 +54,7 @@ function bubbleSort() {
 				array[i + 1] = temp;
 				highlight = "highlightRed";
 			}
+			// Print line loop
 			array.forEach(function(e, index) {
 				if (index === i || index === i + 1) {
 					print += "<span class='" + highlight + "'>&nbsp; " + e + " &nbsp;</span>";
@@ -56,17 +67,20 @@ function bubbleSort() {
 			print += "<br>";
 		}
 		print += "<br>";
-		if (length === 2) {
-			break;
-		}
 		length--;
 		pass++;
 	}
 
-	print += "Final &nbsp; : &nbsp;&nbsp;&nbsp;";
-	array.forEach(function(e) {
-		print += "<span class='highlightBlue'>&nbsp; " + e + " &nbsp;</span>";
-	});
+	if (pass >= 50) {
+		alert("Maximum number of passes reached!");
+	} else {
+		print += "Final &nbsp; : &nbsp;&nbsp;&nbsp;";
+		array.forEach(function(e) {
+			print += "<span class='highlightBlue'>&nbsp; " + e + " &nbsp;</span>";
+		});
+	}
+
+	print += "</p>";
 	output.innerHTML = print;
 	input.value = array.join(" ");
 }
