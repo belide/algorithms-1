@@ -41,7 +41,7 @@ function bubbleSort() {
 	print += "<br><br>";
 
 	// Main loop
-	while (!sorted && pass < 50 && length >= 2) {
+	while (!sorted && pass < 30 && length >= 2) {
 		sorted = true;
 		// Pass loop
 		for (let i = 0; i < length - 1; i++) {
@@ -71,17 +71,18 @@ function bubbleSort() {
 		pass++;
 	}
 
-	if (pass >= 50) {
-		alert("Maximum number of passes reached!");
+	if (pass >= 30) {
+		alert("Maximum number of passes (30) reached!\nThe list was not fully sorted.\r\nYou can use the algorithm again to sort the list further.");
+		output.innerHTML = "";
 	} else {
 		print += "Final &nbsp; : &nbsp;&nbsp;&nbsp;";
 		array.forEach(function(e) {
 			print += "<span class='highlightBlue'>&nbsp; " + e + " &nbsp;</span>";
 		});
+		print += "</p>";
+		output.innerHTML = print;
 	}
 
-	print += "</p>";
-	output.innerHTML = print;
 	input.value = array.join(" ");
 }
 
