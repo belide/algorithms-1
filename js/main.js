@@ -73,7 +73,7 @@ function bubbleSort() {
 		alert("Maximum number of passes (30) reached!\nThe list was not fully sorted.\r\nYou can use the algorithm again to sort the list further.");
 		output.innerHTML = "";
 	} else {
-		alert(`List sorted successfully.\nNumber of passes: ${pass - 1}.`)
+		alert(`List sorted successfully.\nNumber of passes: ${pass - 1}.`);
 		print += "Final &nbsp; : &nbsp;&nbsp;&nbsp;";
 		array.forEach(function(e) {
 			print += "<span class='highlightBlue'>&nbsp; " + e + " &nbsp;</span>";
@@ -122,7 +122,7 @@ function insertionSort() {
 				}
 			});
 			print += "<br>";
-			if (highlight === 'highlightGreen') {
+			if (highlight === "highlightGreen") {
 				break;
 			}
 		}
