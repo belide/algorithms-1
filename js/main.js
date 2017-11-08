@@ -7,7 +7,7 @@ let input = document.querySelector("#main-input"),
 	insertionSortB = document.querySelector("#insertion-sort"),
 	mergeSortB = document.querySelector("#merge-sort"),
 	quickSortB = document.querySelector("#quick-sort"),
-	radixSortB = document.querySelector("#radix-sort"),
+	selectionSortB = document.querySelector("#selection-sort"),
 	binarySearchB = document.querySelector("#binary-search");
 
 // Setup buttons
@@ -15,7 +15,7 @@ bubbleSortB.addEventListener("click", bubbleSort);
 insertionSortB.addEventListener("click", insertionSort);
 mergeSortB.addEventListener("click", mergeSort);
 quickSortB.addEventListener("click", quickSort);
-radixSortB.addEventListener("click", radixSort);
+selectionSortB.addEventListener("click", selectionSort);
 binarySearchB.addEventListener("click", binarySearch);
 
 // Algorithms - Bubble Sort
@@ -149,8 +149,8 @@ function quickSort() {
 	alert("Coming soon!");
 }
 
-// Algorithms - Radix Sort
-function radixSort() {
+// Algorithms - selection Sort
+function selectionSort() {
 	alert("Coming soon!");
 }
 

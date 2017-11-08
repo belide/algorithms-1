@@ -93,7 +93,7 @@ input {
 	grid-row: 4 / 5;
 }
 
-#radix-sort {
+#selection-sort {
 	grid-column: 2 / span 1;
 	grid-row: 4 / 5;
 }
