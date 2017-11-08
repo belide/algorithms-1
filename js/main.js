@@ -9,6 +9,7 @@ let input = document.querySelector("#main-input"),
 	quickSortB = document.querySelector("#quick-sort"),
 	selectionSortB = document.querySelector("#selection-sort"),
 	binarySearchB = document.querySelector("#binary-search");
+let printL = "";
 
 // Setup buttons
 bubbleSortB.addEventListener("click", bubbleSort);
@@ -23,10 +24,10 @@ function bubbleSort() {
 	let array = input.value.split(" "),
 		length = array.length,
 		sorted = false,
-		pass = 1,
-		print = "<p>Initial&nbsp; : &nbsp;&nbsp;&nbsp;";
+		pass = 1;
+	printL = "<p>Initial&nbsp; : &nbsp;&nbsp;&nbsp;";
 
-	// Check for NaN and initial print line
+	// Check for NaN and initial printL line
 	for (let i = 0; i < length; i++) {
 		if (isNaN(array[i])) {
 			alert("Only numbers are allowed.");
@@ -34,16 +35,16 @@ function bubbleSort() {
 			return 1;
 		}
 		array[i] = +array[i];
-		print += "<span class='highlightBlue'>&nbsp; " + array[i] + "&nbsp; </span>";
+		printL += "<span class='highlightBlue'>&nbsp; " + array[i] + "&nbsp; </span>";
 	}
-	print += "<br><br>";
+	printL += "<br><br>";
 
 	// Main loop
 	while (!sorted && pass < 30 && length >= 2) {
 		sorted = true;
 		// Pass loop
 		for (let i = 0; i < length - 1; i++) {
-			print += "Pass " + pass + " : &nbsp;&nbsp;&nbsp;";
+			printL += "Pass " + pass + " : &nbsp;&nbsp;&nbsp;";
 			let highlight = "highlightGreen";
 			if (array[i] > array[i + 1]) {
 				sorted = false;
@@ -52,19 +53,19 @@ function bubbleSort() {
 				array[i + 1] = temp;
 				highlight = "highlightRed";
 			}
-			// Print line loop
+			// printL line loop
 			array.forEach(function(e, index) {
 				if (index === i || index === i + 1) {
-					print += "<span class='" + highlight + "'>&nbsp; " + e + " &nbsp;</span>";
+					printL += "<span class='" + highlight + "'>&nbsp; " + e + " &nbsp;</span>";
 				} else if (index > length - 1) {
-					print += "<span class='highlightOrange'>&nbsp; " + e + " &nbsp;</span>";
+					printL += "<span class='highlightOrange'>&nbsp; " + e + " &nbsp;</span>";
 				} else {
-					print += "<span class='highlightGrey'>&nbsp; " + e + " &nbsp;</span>";
+					printL += "<span class='highlightGrey'>&nbsp; " + e + " &nbsp;</span>";
 				}
 			});
-			print += "<br>";
+			printL += "<br>";
 		}
-		print += "<br>";
+		printL += "<br>";
 		length--;
 		pass++;
 	}
@@ -74,12 +75,12 @@ function bubbleSort() {
 		output.innerHTML = "";
 	} else {
 		alert(`List sorted successfully.\nNumber of passes: ${pass - 1}.`);
-		print += "Final &nbsp; : &nbsp;&nbsp;&nbsp;";
+		printL += "Final &nbsp; : &nbsp;&nbsp;&nbsp;";
 		array.forEach(function(e) {
-			print += "<span class='highlightBlue'>&nbsp; " + e + " &nbsp;</span>";
+			printL += "<span class='highlightBlue'>&nbsp; " + e + " &nbsp;</span>";
 		});
-		print += "</p>";
-		output.innerHTML = print;
+		printL += "</p>";
+		output.innerHTML = printL;
 	}
 
 	input.value = array.join(" ");
@@ -88,10 +89,10 @@ function bubbleSort() {
 // Algorithms - Insertion Sort
 function insertionSort() {
 	let array = input.value.split(" "),
-		length = array.length,
-		print = "<p>Initial&nbsp; : &nbsp;&nbsp;&nbsp;";
+		length = array.length;
+	printL = "<p>Initial&nbsp; : &nbsp;&nbsp;&nbsp;";
 
-	// Check for NaN and initial print line
+	// Check for NaN and initial printL line
 	for (let i = 0; i < length; i++) {
 		if (isNaN(array[i])) {
 			alert("Only numbers are allowed.");
@@ -99,14 +100,14 @@ function insertionSort() {
 			return 1;
 		}
 		array[i] = +array[i];
-		print += "<span class='highlightBlue'>&nbsp; " + array[i] + "&nbsp; </span>";
+		printL += "<span class='highlightBlue'>&nbsp; " + array[i] + "&nbsp; </span>";
 	}
-	print += "<br><br>";
+	printL += "<br><br>";
 
 	// Main loop
 	for (let i = 1; i < length; i++) {
 		for (let k = i; k > 0; k--) {
-			print += "Index " + i + " : &nbsp;&nbsp;&nbsp;";
+			printL += "Index " + i + " : &nbsp;&nbsp;&nbsp;";
 			let highlight = "highlightGreen";
 			if (array[k] < array[k - 1]) {
 				highlight = "highlightRed";
@@ -116,32 +117,92 @@ function insertionSort() {
 			}
 			array.forEach(function(e, index) {
 				if (index === k || index === k - 1) {
-					print += "<span class='" + highlight + "'>&nbsp; " + e + " &nbsp;</span>";
+					printL += "<span class='" + highlight + "'>&nbsp; " + e + " &nbsp;</span>";
 				} else {
-					print += "<span class='highlightGrey'>&nbsp; " + e + " &nbsp;</span>";
+					printL += "<span class='highlightGrey'>&nbsp; " + e + " &nbsp;</span>";
 				}
 			});
-			print += "<br>";
+			printL += "<br>";
 			if (highlight === "highlightGreen") {
 				break;
 			}
 		}
-		print += "<br>";
+		printL += "<br>";
 	}
 
 	alert("List sorted successfully.");
-	print += "Final &nbsp; : &nbsp;&nbsp;&nbsp;";
+	printL += "Final &nbsp; : &nbsp;&nbsp;&nbsp;";
 	array.forEach(function(e) {
-		print += "<span class='highlightBlue'>&nbsp; " + e + " &nbsp;</span>";
+		printL += "<span class='highlightBlue'>&nbsp; " + e + " &nbsp;</span>";
 	});
-	print += "</p>";
-	output.innerHTML = print;
+	printL += "</p>";
+	output.innerHTML = printL;
 	input.value = array.join(" ");
 }
 
 // Algorithms - Merge Sort
 function mergeSort() {
-	alert("Coming soon!");
+	let array = input.value.split(" "),
+		length = array.length;
+	printL = "<p>Initial&nbsp; : &nbsp;&nbsp;&nbsp;";
+
+	// Check for NaN and initial printL line
+	for (let i = 0; i < length; i++) {
+		if (isNaN(array[i])) {
+			alert("Only numbers are allowed.");
+			output.innerHTML = "";
+			return 1;
+		}
+		array[i] = +array[i];
+		printL += "<span class='highlightBlue'>&nbsp; " + array[i] + "&nbsp; </span>";
+	}
+	printL += "<br><br>";
+
+	array = array.length < 2 ? array : mergeSort_main(array, printL);
+	output.innerHTML = printL;
+	console.log(array);
+}
+
+// Merge Sort - Main inner
+function mergeSort_main(array = []) {
+	let len = array.length,
+		middle = Math.floor(len / 2),
+		left = array.slice(0, middle),
+		right = array.slice(middle);
+
+	left.forEach(function(e) {
+		printL += "<span class='highlightGrey'>&nbsp; " + e + " &nbsp;</span>";
+	});
+	right.forEach(function(e) {
+		printL += "<span class='highlightGrey'>&nbsp; " + e + " &nbsp;</span>";
+	});
+	printL += "<br><br>";
+	return len < 2 ? array : mergeSort_megre(mergeSort_main(left), mergeSort_main(right), printL);
+}
+
+// Merge Sort - Merge inner
+function mergeSort_megre(left, right) {
+	let result = [],
+		indexLeft = 0,
+		indexRight = 0;
+
+	while (indexLeft < left.length && indexRight < right.length) {
+		if (left[indexLeft] < right[indexRight]) {
+			result.push(left[indexLeft]);
+			indexLeft++;
+		} else {
+			result.push(right[indexRight]);
+			indexRight++;
+		}
+	}
+
+	let final = result.concat(left.slice(indexLeft)).concat(right.slice(indexRight));
+	final.forEach(function(e) {
+		printL += "<span class='highlightGrey'>&nbsp; " + e + " &nbsp;</span>";
+	});
+	printL += "<br><br>";
+
+	return final;
 }
 
 // Algorithms - Quick Sort
@@ -149,7 +210,7 @@ function quickSort() {
 	alert("Coming soon!");
 }
 
-// Algorithms - selection Sort
+// Algorithms - Selection Sort
 function selectionSort() {
 	alert("Coming soon!");
 }
