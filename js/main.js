@@ -170,13 +170,6 @@ function mergeSort_main(array = []) {
 		left = array.slice(0, middle),
 		right = array.slice(middle);
 
-	left.forEach(function(e) {
-		printL += "<span class='highlightGrey'>&nbsp; " + e + " &nbsp;</span>";
-	});
-	right.forEach(function(e) {
-		printL += "<span class='highlightGrey'>&nbsp; " + e + " &nbsp;</span>";
-	});
-	printL += "<br><br>";
 	return len < 2 ? array : mergeSort_megre(mergeSort_main(left), mergeSort_main(right), printL);
 }
 
@@ -196,13 +189,7 @@ function mergeSort_megre(left, right) {
 		}
 	}
 
-	let final = result.concat(left.slice(indexLeft)).concat(right.slice(indexRight));
-	final.forEach(function(e) {
-		printL += "<span class='highlightGrey'>&nbsp; " + e + " &nbsp;</span>";
-	});
-	printL += "<br><br>";
-
-	return final;
+	return result.concat(left.slice(indexLeft)).concat(right.slice(indexRight));
 }
 
 // Algorithms - Quick Sort
