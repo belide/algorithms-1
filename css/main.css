@@ -73,27 +73,27 @@ input {
 	text-align: center;
 }
 
-#bubble-sort {
+#selection-sort {
 	grid-column: 1 / span 1;
 	grid-row: 3 / 4;
 }
 
-#insertion-sort {
+#bubble-sort {
 	grid-column: 2 / span 1;
 	grid-row: 3 / 4;
 }
 
-#merge-sort {
+#insertion-sort {
 	grid-column: 3 / span 1;
 	grid-row: 3 / 4;
 }
 
-#quick-sort {
+#merge-sort {
 	grid-column: 1 / span 1;
 	grid-row: 4 / 5;
 }
 
-#selection-sort {
+#quick-sort {
 	grid-column: 2 / span 1;
 	grid-row: 4 / 5;
 }

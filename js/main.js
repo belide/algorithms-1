@@ -3,23 +3,28 @@
 // Declare initial variables
 let input = document.querySelector("#main-input"),
 	output = document.querySelector(".output"),
+	selectionSortB = document.querySelector("#selection-sort"),
 	bubbleSortB = document.querySelector("#bubble-sort"),
 	insertionSortB = document.querySelector("#insertion-sort"),
 	mergeSortB = document.querySelector("#merge-sort"),
 	quickSortB = document.querySelector("#quick-sort"),
-	selectionSortB = document.querySelector("#selection-sort"),
 	binarySearchB = document.querySelector("#binary-search");
 let printL = "";
 
 // Setup buttons
+selectionSortB.addEventListener("click", selectionSort);
 bubbleSortB.addEventListener("click", bubbleSort);
 insertionSortB.addEventListener("click", insertionSort);
 mergeSortB.addEventListener("click", mergeSort);
 quickSortB.addEventListener("click", quickSort);
-selectionSortB.addEventListener("click", selectionSort);
 binarySearchB.addEventListener("click", binarySearch);
 
-// Algorithms - Bubble Sort
+// ---------- Algorithms - Selection Sort ----------
+function selectionSort() {
+	alert("Coming soon!");
+}
+
+// ---------- Algorithms - Bubble Sort ----------
 function bubbleSort() {
 	let array = input.value.split(" "),
 		length = array.length,
@@ -86,7 +91,7 @@ function bubbleSort() {
 	input.value = array.join(" ");
 }
 
-// Algorithms - Insertion Sort
+// ---------- Algorithms - Insertion Sort ----------
 function insertionSort() {
 	let array = input.value.split(" "),
 		length = array.length;
@@ -140,7 +145,7 @@ function insertionSort() {
 	input.value = array.join(" ");
 }
 
-// Algorithms - Merge Sort
+// ---------- Algorithms - Merge Sort ----------
 function mergeSort() {
 	let array = input.value.split(" "),
 		length = array.length;
@@ -156,53 +161,65 @@ function mergeSort() {
 		array[i] = +array[i];
 		printL += "<span class='highlightBlue'>&nbsp; " + array[i] + "&nbsp; </span>";
 	}
-	printL += "<br><br>";
 
-	array = array.length < 2 ? array : mergeSort_main(array, printL);
+	array = length < 2 ? array : mergeSort_main(array, length);
+
+	alert("List sorted successfully.");
+	printL += "Final &nbsp; : &nbsp;&nbsp;&nbsp;";
+	array.forEach(function(e) {
+		printL += "<span class='highlightBlue'>&nbsp; " + e + " &nbsp;</span>";
+	});
+	printL += "</p>";
 	output.innerHTML = printL;
 	console.log(array);
 }
 
 // Merge Sort - Main inner
-function mergeSort_main(array = []) {
-	let len = array.length,
-		middle = Math.floor(len / 2),
-		left = array.slice(0, middle),
-		right = array.slice(middle);
+function mergeSort_main(array = [], len) {
 
-	return len < 2 ? array : mergeSort_megre(mergeSort_main(left), mergeSort_main(right), printL);
 }
 
 // Merge Sort - Merge inner
 function mergeSort_megre(left, right) {
-	let result = [],
-		indexLeft = 0,
-		indexRight = 0;
 
-	while (indexLeft < left.length && indexRight < right.length) {
-		if (left[indexLeft] < right[indexRight]) {
-			result.push(left[indexLeft]);
-			indexLeft++;
-		} else {
-			result.push(right[indexRight]);
-			indexRight++;
-		}
-	}
-
-	return result.concat(left.slice(indexLeft)).concat(right.slice(indexRight));
 }
 
-// Algorithms - Quick Sort
+// ---------- Merge Sort - Recursive implementation (no visualization) ----------
+// Merge Sort - Main inner
+// function mergeSort_main(array = []) {
+// 	let len = array.length,
+// 		middle = Math.floor(len / 2),
+// 		left = array.slice(0, middle),
+// 		right = array.slice(middle);
+
+// 	return len < 2 ? array : mergeSort_megre(mergeSort_main(left), mergeSort_main(right));
+// }
+
+// Merge Sort - Merge inner
+// function mergeSort_megre(left, right) {
+// 	let result = [],
+// 		indexLeft = 0,
+// 		indexRight = 0;
+
+// 	while (indexLeft < left.length && indexRight < right.length) {
+// 		if (left[indexLeft] < right[indexRight]) {
+// 			result.push(left[indexLeft]);
+// 			indexLeft++;
+// 		} else {
+// 			result.push(right[indexRight]);
+// 			indexRight++;
+// 		}
+// 	}
+
+// 	return result.concat(left.slice(indexLeft)).concat(right.slice(indexRight));
+// }
+
+// ---------- Algorithms - Quick Sort ----------
 function quickSort() {
 	alert("Coming soon!");
 }
 
-// Algorithms - Selection Sort
-function selectionSort() {
-	alert("Coming soon!");
-}
-
-// Algorithms - Binary Search
+// ---------- Algorithms - Binary Search ----------
 function binarySearch() {
 	alert("Coming soon!");
 }
