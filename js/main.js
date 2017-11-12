@@ -162,26 +162,63 @@ function mergeSort() {
 		printL += "<span class='highlightBlue'>&nbsp; " + array[i] + "&nbsp; </span>";
 	}
 
-	array = length < 2 ? array : mergeSort_main(array, length);
+	// Show array split into single values
+	printL += "<br><br>Step 0 &nbsp; : &nbsp;&nbsp;&nbsp;";
+	array.forEach(function(e) {
+		printL += "&nbsp;<span class='highlightOrange'>&nbsp; " + e + " &nbsp;</span>&nbsp;";
+	});
+	printL += "<br>";
+
+	if (length > 1) {
+		mergeSort_main(array, length);
+	}
 
 	alert("List sorted successfully.");
-	printL += "Final &nbsp; : &nbsp;&nbsp;&nbsp;";
+	printL += "<br>Final &nbsp; : &nbsp;&nbsp;&nbsp;";
 	array.forEach(function(e) {
 		printL += "<span class='highlightBlue'>&nbsp; " + e + " &nbsp;</span>";
 	});
 	printL += "</p>";
 	output.innerHTML = printL;
-	console.log(array);
+	input.value = array.join(" ");
 }
 
 // Merge Sort - Main inner
 function mergeSort_main(array = [], len) {
-
+	for (let width = 1, count = 1; width < len; width *= 2, count++) {
+		printL += `<br>Step ${count} &nbsp; : &nbsp;&nbsp;&nbsp;`;
+		for (let i = 0; i < len; i = i + 2 * width) {
+			mergeSort_megre(array, i, Math.min(i + width, len), Math.min(i + 2 * width, len));
+			printL += "&nbsp;";
+			for (let j = i; j < Math.min(i + 2 * width, len); j++) {
+				printL += "<span class='highlightGreen'>&nbsp; " + array[j] + " &nbsp;</span>";
+			}
+			printL += "&nbsp;";
+		}
+		printL += "<br>";
+	}
 }
 
 // Merge Sort - Merge inner
-function mergeSort_megre(left, right) {
+function mergeSort_megre(array = [], left, right, end) {
+	let n = left,
+		m = right,
+		currentSort = [],
+		j;
 
+	for (j = left; j < end; j++) {
+		if (n < right && (m >= end || array[n] < array[m])) {
+			currentSort.push(array[n]);
+			n++;
+		} else {
+			currentSort.push(array[m]);
+			m++;
+		}
+	}
+
+	currentSort.map(function(item, i) {
+		array[left + i] = item;
+	});
 }
 
 // ---------- Merge Sort - Recursive implementation (no visualization) ----------
