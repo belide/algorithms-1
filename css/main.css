@@ -67,6 +67,10 @@ input {
 	background-color: rgb(151, 182, 231);
 }
 
+.highlightPurple {
+	background-color: rgb(199, 151, 231);
+}
+
 #main-input {
 	grid-column: 1 / span 3;
 	grid-row: 2 / 3;

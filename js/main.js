@@ -21,7 +21,61 @@ binarySearchB.addEventListener("click", binarySearch);
 
 // ---------- Algorithms - Selection Sort ----------
 function selectionSort() {
-	alert("Coming soon!");
+	let array = input.value.split(" "),
+		length = array.length,
+		min;
+	printL = "<p>Initial&nbsp; : &nbsp;&nbsp;&nbsp;";
+
+	// Check for NaN and initial printL line
+	for (let i = 0; i < length; i++) {
+		if (isNaN(array[i])) {
+			alert("Only numbers are allowed.");
+			output.innerHTML = "";
+			return 1;
+		}
+		array[i] = +array[i];
+		printL += "<span class='highlightBlue'>&nbsp; " + array[i] + "&nbsp; </span>";
+	}
+	printL += "<br><br>";
+
+	for (let i = 0; i < length; i++) {
+		min = i;
+		for (let j = i + 1; j < length; j++) {
+			printL += "Index " + i + " : &nbsp;&nbsp;&nbsp;";
+			let highlight = "highlightGreen";
+			if (array[j] < array[min]) {
+				min = j;
+				highlight = "highlightRed";
+			}
+			array.forEach(function(e, index) {
+				if (index < i) {
+					printL += "<span class='highlightOrange'>&nbsp; " + e + " &nbsp;</span>";
+				} else if (index === i) {
+					printL += "<span class='highlightPurple'>&nbsp; " + e + " &nbsp;</span>";
+				} else if (index === j) {
+					printL += "<span class='" + highlight + "'>&nbsp; " + e + " &nbsp;</span>";
+				} else {
+					printL += "<span class='highlightGrey'>&nbsp; " + e + " &nbsp;</span>";
+				}
+			});
+			printL += "<br>";
+		}
+		if (i != min) {
+			let temp = array[i];
+			array[i] = array[min];
+			array[min] = temp;
+		}
+		printL += "<br>";
+	}
+
+	alert("List sorted successfully.");
+	printL += "Final &nbsp; : &nbsp;&nbsp;&nbsp;";
+	array.forEach(function(e) {
+		printL += "<span class='highlightBlue'>&nbsp; " + e + " &nbsp;</span>";
+	});
+	printL += "</p>";
+	output.innerHTML = printL;
+	input.value = array.join(" ");
 }
 
 // ---------- Algorithms - Bubble Sort ----------
