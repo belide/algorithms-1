@@ -307,7 +307,67 @@ function mergeSort_megre(array = [], left, right, end) {
 
 // ---------- Algorithms - Quick Sort ----------
 function quickSort() {
-	alert("Coming soon!");
+	let array = input.value.split(" "),
+		length = array.length;
+	printL = "<p>Initial&nbsp; : &nbsp;&nbsp;&nbsp;";
+
+	// Check for NaN and initial printL line
+	for (let i = 0; i < length; i++) {
+		if (isNaN(array[i])) {
+			alert("Only numbers are allowed.");
+			output.innerHTML = "";
+			return 1;
+		}
+		array[i] = +array[i];
+		printL += "<span class='highlightBlue'>&nbsp; " + array[i] + "&nbsp; </span>";
+	}
+	printL += "<br>";
+
+	quickSort_main(array, 0, length - 1);
+
+	//alert("List sorted successfully.");
+	printL += "<br>Final &nbsp; : &nbsp;&nbsp;&nbsp;";
+	array.forEach(function(e) {
+		printL += "<span class='highlightBlue'>&nbsp; " + e + " &nbsp;</span>";
+	});
+	printL += "</p>";
+	output.innerHTML = printL;
+	//input.value = array.join(" ");
+}
+
+// Quick Sort - Main ineer
+function quickSort_main(arr, left, right) {
+	let pivot,
+		partitionIndex;
+
+	if (left < right) {
+		pivot = right;
+		partitionIndex = quickSort_partition(arr, pivot, left, right);
+
+		quickSort_main(arr, left, partitionIndex - 1);
+		quickSort_main(arr, partitionIndex + 1, right);
+	}
+	return arr;
+}
+
+// Quick Sort - Partition ineer
+function quickSort_partition(arr, pivot, left, right) {
+	let pivotValue = arr[pivot],
+		partitionIndex = left;
+
+	for (let i = left; i < right; i++) {
+		if (arr[i] < pivotValue) {
+			let temp = arr[i];
+			arr[i] = arr[partitionIndex];
+			arr[partitionIndex] = temp;
+			partitionIndex++;
+		}
+	}
+
+	let temp = arr[right];
+	arr[right] = arr[partitionIndex];
+	arr[partitionIndex] = temp;
+	return partitionIndex;
 }
 
 // ---------- Algorithms - Binary Search ----------
