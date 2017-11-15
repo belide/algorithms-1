@@ -312,5 +312,87 @@ function quickSort() {
 
 // ---------- Algorithms - Binary Search ----------
 function binarySearch() {
-	alert("Coming soon!");
+	let array = input.value.split(" "),
+		length = array.length,
+		selLen = array.length,
+		start = 0,
+		end = array.length,
+		target = +prompt("What number are you searching for?"),
+		targetPos = 0,
+		step = 0;
+	printL = "<p>Input&nbsp; : &nbsp;&nbsp;&nbsp;";
+
+	if (isNaN(target)) {
+		alert("Only numbers are allowed.");
+		output.innerHTML = "";
+		return 1;
+	}
+
+	// Check for NaN and initial printL line
+	for (let i = 0; i < length; i++) {
+		if (isNaN(array[i])) {
+			alert("Only numbers are allowed.");
+			output.innerHTML = "";
+			return 1;
+		}
+		array[i] = +array[i];
+		// Check if array is sorted
+		if (array[i] > array[Math.min(i + 1, length - 1)]) {
+			alert("Please sort the list (in an ascending order) before using binary search.");
+			output.innerHTML = "";
+			return 2;
+		}
+		printL += "<span class='highlightBlue'>&nbsp; " + array[i] + "&nbsp; </span>";
+	}
+	printL += "<br><br>";
+
+	while (selLen > 0 && step < 50) {
+		targetPos = start + Math.floor((selLen - 1) / 2);
+		if (array[targetPos] === target) {
+			alert("Number FOUND in the list.");
+			printL += `Step ${step}&nbsp; : &nbsp;&nbsp;&nbsp;`;
+			array.forEach(function(e, index) {
+				if (index === targetPos) {
+					printL += "<span class='highlightGreen'>&nbsp; " + e + " &nbsp;</span>";
+				} else {
+					printL += "<span class='highlightRed'>&nbsp; " + e + " &nbsp;</span>";
+				}
+			});
+			printL += "</p>";
+			output.innerHTML = printL;
+			return 0;
+		} else if (array[targetPos] < target) {
+			start = targetPos + 1;
+			selLen = end - start;
+			printL += `Step ${step}&nbsp; : &nbsp;&nbsp;&nbsp;`;
+			array.forEach(function(e, index) {
+				if (index === targetPos) {
+					printL += "<span class='highlightOrange'>&nbsp; " + e + " &nbsp;</span>";
+				} else if (index < start || index > end) {
+					printL += "<span class='highlightRed'>&nbsp; " + e + " &nbsp;</span>";
+				} else {
+					printL += "<span class='highlightGrey'>&nbsp; " + e + " &nbsp;</span>";
+				}
+			});
+		} else {
+			end = targetPos;
+			selLen = end - start;
+			printL += `Step ${step}&nbsp; : &nbsp;&nbsp;&nbsp;`;
+			array.forEach(function(e, index) {
+				if (index === targetPos) {
+					printL += "<span class='highlightOrange'>&nbsp; " + e + " &nbsp;</span>";
+				} else if (index < start || index > end) {
+					printL += "<span class='highlightRed'>&nbsp; " + e + " &nbsp;</span>";
+				} else {
+					printL += "<span class='highlightGrey'>&nbsp; " + e + " &nbsp;</span>";
+				}
+			});
+		}
+		step++;
+		printL += "<br><br>";
+	}
+
+	alert("Number NOT FOUND in the lsit.");
+	printL += "</p>";
+	output.innerHTML = printL;
 }
