@@ -9,7 +9,8 @@ let input = document.querySelector("#main-input"),
 	mergeSortB = document.querySelector("#merge-sort"),
 	quickSortB = document.querySelector("#quick-sort"),
 	binarySearchB = document.querySelector("#binary-search");
-let printL = "";
+let printL = "",
+	quickSort_step = 0;
 
 // Setup buttons
 selectionSortB.addEventListener("click", selectionSort);
@@ -310,6 +311,7 @@ function quickSort() {
 	let array = input.value.split(" "),
 		length = array.length;
 	printL = "<p>Initial&nbsp; : &nbsp;&nbsp;&nbsp;";
+	quickSort_step = 0;
 
 	// Check for NaN and initial printL line
 	for (let i = 0; i < length; i++) {
@@ -325,14 +327,14 @@ function quickSort() {
 
 	quickSort_main(array, 0, length - 1);
 
-	//alert("List sorted successfully.");
+	alert("List sorted successfully.");
 	printL += "<br>Final &nbsp; : &nbsp;&nbsp;&nbsp;";
 	array.forEach(function(e) {
 		printL += "<span class='highlightBlue'>&nbsp; " + e + " &nbsp;</span>";
 	});
 	printL += "</p>";
 	output.innerHTML = printL;
-	//input.value = array.join(" ");
+	input.value = array.join(" ");
 }
 
 // Quick Sort - Main ineer
@@ -344,13 +346,25 @@ function quickSort_main(arr, left, right) {
 		pivot = right;
 		partitionIndex = quickSort_partition(arr, pivot, left, right);
 
+		printL += `<br>Step ${quickSort_step} &nbsp; : &nbsp;&nbsp;&nbsp;`;
+		arr.forEach(function(e, index) {
+			if (index === partitionIndex) {
+				printL += "<span class='highlightOrange'>&nbsp; " + e + " &nbsp;</span>";
+			} else if (index < partitionIndex) {
+				printL += "<span class='highlightGreen'>&nbsp; " + e + " &nbsp;</span>";
+			} else {
+				printL += "<span class='highlightRed'>&nbsp; " + e + " &nbsp;</span>";
+			}
+		});
+		printL += "<br>";
+		quickSort_step++;
+
 		quickSort_main(arr, left, partitionIndex - 1);
 		quickSort_main(arr, partitionIndex + 1, right);
 	}
-	return arr;
 }
 
-// Quick Sort - Partition ineer
+// Quick Sort - Partition inner
 function quickSort_partition(arr, pivot, left, right) {
 	let pivotValue = arr[pivot],
 		partitionIndex = left;
