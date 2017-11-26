@@ -8,8 +8,8 @@ let input = document.querySelector("#main-input"),
 	insertionSortB = document.querySelector("#insertion-sort"),
 	mergeSortB = document.querySelector("#merge-sort"),
 	quickSortB = document.querySelector("#quick-sort"),
-	binarySearchB = document.querySelector("#binary-search");
-let printL = "",
+	binarySearchB = document.querySelector("#binary-search"),
+	printL = "",
 	quickSort_step = 0;
 
 // Setup buttons

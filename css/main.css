@@ -17,6 +17,11 @@ h2 {
 
 input {
 	font-size: 14px;
+	border: solid rgb(75, 75, 75) 1px;
+}
+
+button {
+	border: solid rgb(75, 75, 75) 1px;
 }
 
 .grid {
@@ -29,8 +34,13 @@ input {
 	grid-column-gap: 5px;
 	grid-row-gap: 10px;
 	justify-items: stretch;
+	-webkit-box-align: stretch;
+	-ms-flex-align: stretch;
 	align-items: stretch;
+	-webkit-box-pack: stretch;
+	-ms-flex-pack: stretch;
 	justify-content: stretch;
+	-ms-flex-line-pack: stretch;
 	align-content: stretch;
 }
 
